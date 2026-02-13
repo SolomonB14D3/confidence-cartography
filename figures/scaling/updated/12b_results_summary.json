@@ -1,0 +1,65 @@
+{
+  "model": "EleutherAI/pythia-12b",
+  "size": "12b",
+  "params": 11846072320,
+  "truth": {
+    "n_pairs": 40,
+    "win_rate": 0.85,
+    "wins": 34,
+    "p_value": 2.8616341296583414e-08,
+    "cohens_d": 0.9859770492880213,
+    "auc": 0.675625,
+    "mean_delta": 0.06732429076314919,
+    "median_delta": 0.06956504426421989,
+    "mean_true_prob": 0.28284912199599743,
+    "mean_false_prob": 0.2155248312328482
+  },
+  "contested": {
+    "spearman_rho": -0.6115038431168094,
+    "spearman_p": 0.00020053488582740423,
+    "spearman_rho_entropy": 0.5963676093762944,
+    "spearman_p_entropy": 0.0003155557331042209,
+    "mann_whitney_stat": 57.0,
+    "mann_whitney_p": 0.006993006993006993,
+    "acc_2way": 0.8166666666666668,
+    "acc_4way": 0.33809523809523806,
+    "cat_means": {
+      "settled": 0.34438415732224803,
+      "mostly_settled": 0.3435339502690972,
+      "contested": 0.20469410570155638,
+      "unknown": 0.19832798272291854
+    }
+  },
+  "anomaly": {
+    "mean_contra_delta": -0.027721862598566762,
+    "mean_support_delta": 0.04083458288981042,
+    "contra_vs_support_t": -2.195360521251601,
+    "contra_vs_support_p": 0.07955746211788185,
+    "effect_size": -0.06855644548837718,
+    "n_scenarios": 6
+  },
+  "consensus": {
+    "pearson_r": -0.12938063820266743,
+    "pearson_p": 0.5376413175895643,
+    "pearson_r_entropy": -0.030649973614897977,
+    "pearson_p_entropy": 0.8843652133663025,
+    "spearman_rho": -0.08047752770465069,
+    "spearman_p": 0.702158644237144,
+    "spearman_rho_entropy": -0.17327697352675986,
+    "spearman_p_entropy": 0.4074879968182585
+  },
+  "medical": {
+    "win_rate": 0.84,
+    "wins": 21,
+    "n": 25,
+    "p_value": 0.007886835546678525,
+    "cohens_d": 0.5916659438159318
+  },
+  "mandela": {
+    "pearson_r": 0.46525109876369297,
+    "pearson_p": 0.10913974753983952,
+    "spearman_rho": 0.6189827038658207,
+    "spearman_p": 0.024091303539544053,
+    "n_items": 13
+  }
+}

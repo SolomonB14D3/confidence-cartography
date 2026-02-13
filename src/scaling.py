@@ -46,10 +46,18 @@ MODEL_REGISTRY = {
         "params": 6_857_302_016,
         "dtype": torch.float16,
     },
+    "12b": {
+        "name": "EleutherAI/pythia-12b",
+        "params": 11_846_072_320,
+        "dtype": torch.float16,
+    },
 }
 
 # Ordered smallest → largest (always process this way for memory safety)
 SCALING_MODELS = ["160m", "410m", "1b", "1.4b", "2.8b", "6.9b"]
+
+# Full set including 12B (use for the final scaling point)
+SCALING_MODELS_ALL = ["160m", "410m", "1b", "1.4b", "2.8b", "6.9b", "12b"]
 
 # Param counts for log-scale plots
 PARAM_COUNTS = {k: v["params"] for k, v in MODEL_REGISTRY.items()}
@@ -109,6 +117,7 @@ _SPEED_FACTORS = {
     "1.4b": 8.7,
     "2.8b": 12.0,    # float16 compensates somewhat
     "6.9b": 25.0,    # float16 compensates somewhat
+    "12b": 42.0,     # float16, ~24GB, fits in 96GB unified memory
 }
 
 

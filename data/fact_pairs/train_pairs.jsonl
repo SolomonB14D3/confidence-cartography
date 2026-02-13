@@ -1,0 +1,30 @@
+{"true_text": "Water boils at 100 degrees Celsius at sea level.", "false_text": "Water boils at 50 degrees Celsius at sea level.", "pair_id": "water_boiling", "domain": "science"}
+{"true_text": "Gravity causes objects to fall toward the Earth.", "false_text": "Magnetism causes objects to fall toward the Earth.", "pair_id": "gravity_falling", "domain": "physics"}
+{"true_text": "Jupiter is the largest planet in our solar system.", "false_text": "Mars is the largest planet in our solar system.", "pair_id": "largest_planet", "domain": "astronomy"}
+{"true_text": "The square root of 144 is 12.", "false_text": "The square root of 144 is 14.", "pair_id": "sqrt_144", "domain": "math"}
+{"true_text": "Oxygen is a gas at room temperature.", "false_text": "Oxygen is a liquid at room temperature.", "pair_id": "oxygen_state", "domain": "chemistry"}
+{"true_text": "Photosynthesis converts carbon dioxide into oxygen.", "false_text": "Photosynthesis converts oxygen into carbon dioxide.", "pair_id": "photosynthesis_dir", "domain": "biology"}
+{"true_text": "The Mona Lisa was painted by Leonardo da Vinci.", "false_text": "The Mona Lisa was painted by Michelangelo.", "pair_id": "mona_lisa", "domain": "culture"}
+{"true_text": "The Great Wall of China was built over many centuries.", "false_text": "The Great Wall of China was built in a single year.", "pair_id": "great_wall_time", "domain": "history"}
+{"true_text": "DNA carries genetic information.", "false_text": "DNA carries electrical signals.", "pair_id": "dna_function", "domain": "biology"}
+{"true_text": "Shakespeare wrote Hamlet.", "false_text": "Shakespeare wrote The Odyssey.", "pair_id": "shakespeare", "domain": "history"}
+{"true_text": "The speed of sound in air is about 343 meters per second.", "false_text": "The speed of sound in air is about 700 meters per second.", "pair_id": "speed_of_sound", "domain": "physics"}
+{"true_text": "World War II ended in 1945.", "false_text": "World War II ended in 1952.", "pair_id": "ww2_end", "domain": "history"}
+{"true_text": "The heart has four chambers.", "false_text": "The heart has six chambers.", "pair_id": "heart_chambers", "domain": "biology"}
+{"true_text": "Isaac Newton formulated the laws of motion.", "false_text": "Albert Einstein formulated the laws of motion.", "pair_id": "newton_laws", "domain": "physics"}
+{"true_text": "Insulin regulates blood sugar levels.", "false_text": "Insulin regulates blood pressure.", "pair_id": "insulin_function", "domain": "biology"}
+{"true_text": "The Pacific Ocean is the largest ocean on Earth.", "false_text": "The Atlantic Ocean is the largest ocean on Earth.", "pair_id": "largest_ocean", "domain": "geography"}
+{"true_text": "The Amazon River is in South America.", "false_text": "The Amazon River is in Africa.", "pair_id": "amazon_location", "domain": "geography"}
+{"true_text": "The Moon orbits the Earth.", "false_text": "The Moon orbits Mars.", "pair_id": "moon_orbit", "domain": "astronomy"}
+{"true_text": "Dolphins are mammals.", "false_text": "Dolphins are fish.", "pair_id": "dolphins", "domain": "biology"}
+{"true_text": "Humans have two lungs.", "false_text": "Humans have three lungs.", "pair_id": "human_lungs", "domain": "biology"}
+{"true_text": "The Berlin Wall fell in 1989.", "false_text": "The Berlin Wall fell in 1975.", "pair_id": "berlin_wall", "domain": "history"}
+{"true_text": "Diamonds are made of carbon.", "false_text": "Diamonds are made of silicon.", "pair_id": "diamond_composition", "domain": "science"}
+{"true_text": "The capital of Japan is Tokyo.", "false_text": "The capital of Japan is Beijing.", "pair_id": "japan_capital", "domain": "geography"}
+{"true_text": "Pi is approximately 3.14159.", "false_text": "Pi is approximately 4.14159.", "pair_id": "pi_value", "domain": "math"}
+{"true_text": "The capital of France is Paris.", "false_text": "The capital of France is Berlin.", "pair_id": "france_capital", "domain": "geography"}
+{"true_text": "The Sun is a star.", "false_text": "The Sun is a planet.", "pair_id": "sun_type", "domain": "astronomy"}
+{"true_text": "Light travels faster than sound.", "false_text": "Sound travels faster than light.", "pair_id": "light_vs_sound", "domain": "science"}
+{"true_text": "Gold is a chemical element with symbol Au.", "false_text": "Gold is a chemical element with symbol Fe.", "pair_id": "gold_element", "domain": "chemistry"}
+{"true_text": "The human body is approximately 60 percent water.", "false_text": "The human body is approximately 20 percent water.", "pair_id": "body_water", "domain": "biology"}
+{"true_text": "The Earth orbits the Sun.", "false_text": "The Sun orbits the Earth.", "pair_id": "earth_orbit", "domain": "science"}

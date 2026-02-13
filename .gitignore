@@ -1,0 +1,28 @@
+# Model cache (huge files)
+__pycache__/
+*.pyc
+.cache/
+models/
+
+# HuggingFace cache
+.huggingface/
+
+# Large data files
+*.pt
+*.bin
+*.safetensors
+
+# But keep result JSONLs and figures
+# data/results/ — KEEP
+# figures/ — KEEP
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Conda/venv
+.conda/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/

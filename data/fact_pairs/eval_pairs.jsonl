@@ -1,0 +1,8 @@
+{"true_text": "Mercury is the closest planet to the Sun.", "false_text": "Venus is the closest planet to the Sun.", "pair_id": "closest_planet", "domain": "astronomy"}
+{"true_text": "The chemical formula for water is H2O.", "false_text": "The chemical formula for water is CO2.", "pair_id": "water_formula", "domain": "chemistry"}
+{"true_text": "The Sahara is the largest hot desert in the world.", "false_text": "The Gobi is the largest hot desert in the world.", "pair_id": "largest_desert", "domain": "geography"}
+{"true_text": "The first person to walk on the Moon was Neil Armstrong.", "false_text": "The first person to walk on the Moon was Buzz Aldrin.", "pair_id": "first_moonwalk", "domain": "history"}
+{"true_text": "Blood carries oxygen from the lungs to the body's tissues.", "false_text": "Blood carries nitrogen from the lungs to the body's tissues.", "pair_id": "blood_oxygen", "domain": "biology"}
+{"true_text": "The Eiffel Tower is in Paris.", "false_text": "The Eiffel Tower is in London.", "pair_id": "eiffel_tower", "domain": "culture"}
+{"true_text": "Electrons have a negative charge.", "false_text": "Electrons have a positive charge.", "pair_id": "electron_charge", "domain": "physics"}
+{"true_text": "The human brain contains billions of neurons.", "false_text": "The human brain contains millions of neurons.", "pair_id": "brain_neurons", "domain": "neuroscience"}

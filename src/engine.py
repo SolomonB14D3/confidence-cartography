@@ -1,4 +1,4 @@
-"""Core confidence extraction engine for Pythia models."""
+"""Core confidence extraction engine for causal language models."""
 
 from __future__ import annotations
 
@@ -53,8 +53,10 @@ def load_model(
     print(f"Loading {model_name} (revision={revision}, dtype={use_dtype}) on {_device}...")
 
     _tokenizer = AutoTokenizer.from_pretrained(model_name, revision=revision)
-    # Pythia has no pad token set; use eos_token (token id 0, "<|endoftext|>")
-    _tokenizer.pad_token = _tokenizer.eos_token
+    # Set pad token only if the model doesn't already have one configured
+    # (Pythia needs this; Qwen/Llama/etc. already set their own pad tokens)
+    if _tokenizer.pad_token is None:
+        _tokenizer.pad_token = _tokenizer.eos_token
 
     try:
         _model = AutoModelForCausalLM.from_pretrained(

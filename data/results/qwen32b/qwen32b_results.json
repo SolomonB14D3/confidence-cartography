@@ -1,0 +1,28 @@
+{
+  "model": "Qwen/Qwen2.5-32B",
+  "dtype": "torch.float16",
+  "truth": {
+    "n_pairs": 40,
+    "win_rate": 0.875,
+    "wins": 35,
+    "p_value": 5.820766091346741e-10,
+    "cohens_d": 1.1964942694513672,
+    "auc": 0.706875,
+    "mean_delta": 0.11285188693051398
+  },
+  "medical": {
+    "n_pairs": 25,
+    "win_rate": 0.92,
+    "wins": 23,
+    "p_value": 1.9785638683444424e-05,
+    "cohens_d": 1.0805926488661735,
+    "mean_delta": 0.09855745941358275
+  },
+  "mandela": {
+    "pearson_r": 0.2994084085939536,
+    "pearson_p": 0.3203174744329607,
+    "spearman_rho": 0.3658875538406851,
+    "spearman_p": 0.21888494597210814,
+    "n_items": 13
+  }
+}

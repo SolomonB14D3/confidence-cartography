@@ -16,6 +16,10 @@ models/
 # data/results/ — KEEP
 # figures/ — KEEP
 
+# Large Medicaid data files (too big for git)
+data/medicaid/*.parquet
+data/medicaid/*.csv
+
 # OS files
 .DS_Store
 Thumbs.db

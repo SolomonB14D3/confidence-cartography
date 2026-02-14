@@ -1,0 +1,46 @@
+{
+  "160m": {
+    "model": "160M",
+    "params": 160000000.0,
+    "r1_mean_variance": 0.004976025168826471,
+    "r2_mean_variance": 0.004221650553607573,
+    "variance_ratio": 0.8483981341604387,
+    "r1_mean_reversals": 4.0,
+    "r2_mean_reversals": 4.8076923076923075,
+    "u_statistic": 97.0,
+    "p_value": 0.3813739251725904
+  },
+  "410m": {
+    "model": "410M",
+    "params": 410000000.0,
+    "r1_mean_variance": 0.006818076678039824,
+    "r2_mean_variance": 0.006731802129244858,
+    "variance_ratio": 0.9873461899002303,
+    "r1_mean_reversals": 5.166666666666667,
+    "r2_mean_reversals": 5.0,
+    "u_statistic": 102.0,
+    "p_value": 0.26413387008492684
+  },
+  "1b": {
+    "model": "1B",
+    "params": 1000000000.0,
+    "r1_mean_variance": 0.007636905877970456,
+    "r2_mean_variance": 0.008848897595874605,
+    "variance_ratio": 1.158701916901986,
+    "r1_mean_reversals": 5.5,
+    "r2_mean_reversals": 5.1923076923076925,
+    "u_statistic": 89.0,
+    "p_value": 0.6208882885746068
+  },
+  "1.4b": {
+    "model": "1.4B",
+    "params": 1400000000.0,
+    "r1_mean_variance": 0.010224633924004667,
+    "r2_mean_variance": 0.00943845332490889,
+    "variance_ratio": 0.9231091599709057,
+    "r1_mean_reversals": 4.333333333333333,
+    "r2_mean_reversals": 4.346153846153846,
+    "u_statistic": 93.0,
+    "p_value": 0.49378056747355975
+  }
+}

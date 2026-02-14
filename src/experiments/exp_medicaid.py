@@ -512,6 +512,170 @@ def approach_b_lm_confidence(profiles, model_name="EleutherAI/pythia-6.9b",
 
 
 # ---------------------------------------------------------------------------
+# Step 4c: Approach C — Autoencoder reconstruction error
+# ---------------------------------------------------------------------------
+
+def approach_c_autoencoder(profiles, hidden_dims=(32, 16, 8), epochs=100,
+                           lr=1e-3, batch_size=512, n_runs=5):
+    """Train an autoencoder on provider feature vectors.
+
+    Reconstruction error = confidence analog: providers the model
+    cannot reconstruct well are anomalous (high "surprise").
+
+    Trains on ALL providers (unsupervised — no labels used).
+    Validates by checking whether excluded providers have higher
+    reconstruction error.
+
+    Args:
+        hidden_dims: encoder layer sizes (decoder mirrors).
+        epochs: training epochs per run.
+        lr: learning rate.
+        batch_size: mini-batch size.
+        n_runs: ensemble runs (average reconstruction error across
+                multiple random initializations for stability).
+    """
+    import torch
+    import torch.nn as nn
+    from torch.utils.data import DataLoader, TensorDataset
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.metrics import roc_auc_score
+
+    print("\n" + "=" * 65)
+    print("APPROACH C: AUTOENCODER RECONSTRUCTION ERROR")
+    print("=" * 65)
+
+    feature_cols = [
+        "total_claims", "total_paid", "avg_paid_per_claim",
+        "avg_paid_per_bene", "claims_per_month", "n_procedures",
+        "top_procedure_share", "monthly_spending_cv"
+    ]
+
+    log_cols = ["total_claims", "total_paid", "avg_paid_per_claim",
+                "avg_paid_per_bene", "claims_per_month"]
+
+    # Prepare features
+    X = profiles[feature_cols].copy()
+    for col in log_cols:
+        X[col] = np.log1p(X[col].fillna(0).clip(lower=0))
+    X = X.fillna(0)
+
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    input_dim = X_scaled.shape[1]
+
+    print(f"  Input dimension: {input_dim}")
+    print(f"  Providers: {len(X_scaled):,}")
+    print(f"  Architecture: {input_dim} → {' → '.join(map(str, hidden_dims))} → {' → '.join(map(str, reversed(hidden_dims)))} → {input_dim}")
+
+    # Build autoencoder
+    class Autoencoder(nn.Module):
+        def __init__(self, input_dim, hidden_dims):
+            super().__init__()
+            # Encoder
+            enc_layers = []
+            prev = input_dim
+            for h in hidden_dims:
+                enc_layers.append(nn.Linear(prev, h))
+                enc_layers.append(nn.ReLU())
+                prev = h
+            self.encoder = nn.Sequential(*enc_layers)
+
+            # Decoder (mirror)
+            dec_layers = []
+            dims_rev = list(reversed(hidden_dims))
+            prev = dims_rev[0]
+            for h in dims_rev[1:] + [input_dim]:
+                dec_layers.append(nn.Linear(prev, h))
+                dec_layers.append(nn.ReLU())
+                prev = h
+            # Replace last ReLU with identity (linear output)
+            dec_layers[-1] = nn.Identity()
+            self.decoder = nn.Sequential(*dec_layers)
+
+        def forward(self, x):
+            z = self.encoder(x)
+            return self.decoder(z)
+
+    # Convert to tensor
+    X_tensor = torch.FloatTensor(X_scaled)
+    dataset = TensorDataset(X_tensor)
+
+    # Train multiple runs for stability
+    all_errors = np.zeros((n_runs, len(X_scaled)))
+
+    for run in range(n_runs):
+        print(f"\n  Run {run+1}/{n_runs}...")
+        torch.manual_seed(42 + run)
+        model = Autoencoder(input_dim, list(hidden_dims))
+        optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+        criterion = nn.MSELoss(reduction='none')
+
+        loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+
+        model.train()
+        for epoch in range(epochs):
+            epoch_loss = 0
+            for (batch,) in loader:
+                recon = model(batch)
+                loss = criterion(recon, batch).mean()
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+                epoch_loss += loss.item() * len(batch)
+            epoch_loss /= len(X_scaled)
+
+            if (epoch + 1) % 25 == 0:
+                print(f"    Epoch {epoch+1}/{epochs}: loss = {epoch_loss:.6f}")
+
+        # Compute per-provider reconstruction error
+        model.eval()
+        with torch.no_grad():
+            recon = model(X_tensor)
+            per_sample_error = criterion(recon, X_tensor).mean(dim=1).numpy()
+        all_errors[run] = per_sample_error
+
+        # Quick AUC for this run
+        run_auc = roc_auc_score(profiles["excluded"].values, per_sample_error)
+        print(f"    Run {run+1} AUC: {run_auc:.4f}")
+
+    # Average across runs
+    mean_error = all_errors.mean(axis=0)
+    profiles["recon_error"] = mean_error
+    profiles["anomaly_score_ae"] = mean_error
+
+    # Report
+    excl = profiles[profiles["excluded"] == 1]["recon_error"]
+    non_excl = profiles[profiles["excluded"] == 0]["recon_error"]
+    auc_ae = roc_auc_score(profiles["excluded"].values, mean_error)
+
+    u_stat, p_val = stats.mannwhitneyu(excl, non_excl, alternative="greater")
+
+    print(f"\n  Ensemble AUC (mean of {n_runs} runs): {auc_ae:.4f}")
+    print(f"  Excluded mean recon error: {excl.mean():.6f}")
+    print(f"  Non-excluded mean recon error: {non_excl.mean():.6f}")
+    print(f"  Ratio: {excl.mean() / non_excl.mean():.3f}x")
+    print(f"  Mann-Whitney U: {u_stat:.0f}, p = {p_val:.6f}")
+
+    # Per-feature reconstruction error breakdown
+    print(f"\n  Per-feature reconstruction error (excluded vs non-excluded):")
+    print(f"  {'Feature':<25} {'Excluded':>12} {'Non-Excl':>12} {'Ratio':>8}")
+    print("  " + "-" * 60)
+
+    model.eval()
+    with torch.no_grad():
+        recon_full = model(X_tensor).numpy()
+
+    per_feat_error = (X_scaled - recon_full) ** 2
+    for i, col in enumerate(feature_cols):
+        e_excl = per_feat_error[profiles["excluded"].values == 1, i].mean()
+        e_non = per_feat_error[profiles["excluded"].values == 0, i].mean()
+        ratio = e_excl / e_non if e_non > 0 else float('inf')
+        print(f"  {col:<25} {e_excl:>12.6f} {e_non:>12.6f} {ratio:>8.3f}")
+
+    return profiles
+
+
+# ---------------------------------------------------------------------------
 # Step 5: Validation against LEIE
 # ---------------------------------------------------------------------------
 
@@ -524,8 +688,9 @@ def validate_and_visualize(profiles):
     print("=" * 65)
 
     results = {}
-    auc_a = ap_a = auc_b = ap_b = None
+    auc_a = ap_a = auc_b = ap_b = auc_c = ap_c = None
     y_true_b = y_score_b = None
+    y_true_c = y_score_c = None
 
     # --- Approach A: Statistical ---
     valid_a = profiles["anomaly_score_stat"].notna() & profiles["excluded"].notna()
@@ -563,6 +728,25 @@ def validate_and_visualize(profiles):
         else:
             print("\n  No excluded providers for Approach B validation.")
 
+    # --- Approach C: Autoencoder ---
+    has_ae = "anomaly_score_ae" in profiles.columns
+    if has_ae:
+        valid_c = profiles["anomaly_score_ae"].notna() & profiles["excluded"].notna()
+        y_true_c = profiles.loc[valid_c, "excluded"].values
+        y_score_c = profiles.loc[valid_c, "anomaly_score_ae"].values
+
+        if y_true_c.sum() > 0:
+            auc_c = roc_auc_score(y_true_c, y_score_c)
+            ap_c = average_precision_score(y_true_c, y_score_c)
+            print(f"\nApproach C (Autoencoder):")
+            print(f"  AUC-ROC: {auc_c:.4f}")
+            print(f"  Average Precision: {ap_c:.4f}")
+            print(f"  Base rate: {y_true_c.mean():.4f}")
+            results["ae_auc"] = auc_c
+            results["ae_ap"] = ap_c
+        else:
+            print("\n  No excluded providers for Approach C validation.")
+
     # ===================================================================
     # Visualizations
     # ===================================================================
@@ -572,11 +756,12 @@ def validate_and_visualize(profiles):
 
     # --- Plot 1: Anomaly score distributions ---
     print("\n[1/5] Anomaly score distributions...")
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 
     for ax, col, title in [
         (axes[0], "anomaly_score_stat", "Approach A: Statistical"),
-        (axes[1], "anomaly_score_lm", "Approach B: LM Confidence"),
+        (axes[1], "anomaly_score_ae", "Approach C: Autoencoder"),
+        (axes[2], "anomaly_score_lm", "Approach B: LM Confidence"),
     ]:
         if col not in profiles.columns or profiles[col].isna().all():
             ax.text(0.5, 0.5, "No data", ha="center", va="center", transform=ax.transAxes)
@@ -614,6 +799,11 @@ def validate_and_visualize(profiles):
         ax.plot(fpr, tpr, linewidth=2, color="#2196F3",
                 label=f"Statistical (AUC={auc_a:.3f})")
 
+    if auc_c is not None and y_true_c is not None:
+        fpr_c, tpr_c, _ = roc_curve(y_true_c, y_score_c)
+        ax.plot(fpr_c, tpr_c, linewidth=2, color="#9C27B0",
+                label=f"Autoencoder (AUC={auc_c:.3f})")
+
     if auc_b is not None and y_true_b is not None:
         fpr_b, tpr_b, _ = roc_curve(y_true_b, y_score_b)
         ax.plot(fpr_b, tpr_b, linewidth=2, color="#FF9800",
@@ -640,6 +830,11 @@ def validate_and_visualize(profiles):
         prec, rec, _ = precision_recall_curve(y_true, y_score_a)
         ax.plot(rec, prec, linewidth=2, color="#2196F3",
                 label=f"Statistical (AP={ap_a:.3f})")
+
+    if ap_c is not None and y_true_c is not None:
+        prec_c, rec_c, _ = precision_recall_curve(y_true_c, y_score_c)
+        ax.plot(rec_c, prec_c, linewidth=2, color="#9C27B0",
+                label=f"Autoencoder (AP={ap_c:.3f})")
 
     if ap_b is not None and y_true_b is not None:
         prec_b, rec_b, _ = precision_recall_curve(y_true_b, y_score_b)
@@ -704,6 +899,24 @@ def validate_and_visualize(profiles):
     print(f"\nTop {top_n} by statistical anomaly score:")
     print(top_stat.to_string(index=False))
 
+    if has_ae and "anomaly_score_ae" in profiles.columns:
+        valid_ae = profiles["anomaly_score_ae"].notna()
+        if valid_ae.sum() > 0:
+            top_ae = profiles[valid_ae].nlargest(top_n, "anomaly_score_ae")[
+                ["NPI", "total_claims", "total_paid", "anomaly_score_ae", "excluded"]
+            ]
+            print(f"\nTop {top_n} by autoencoder reconstruction error:")
+            print(top_ae.to_string(index=False))
+
+            # How many excluded in top-K?
+            for k in [50, 100, 500, 1000]:
+                if len(profiles) >= k:
+                    top_k = profiles[valid_ae].nlargest(k, "anomaly_score_ae")
+                    n_excl = top_k["excluded"].sum()
+                    base = profiles["excluded"].mean()
+                    enrichment = (n_excl / k) / base if base > 0 else 0
+                    print(f"  Top-{k}: {n_excl} excluded ({100*n_excl/k:.1f}%, {enrichment:.1f}x enrichment)")
+
     if has_lm and "anomaly_score_lm" in profiles.columns:
         valid_lm = profiles["anomaly_score_lm"].notna()
         if valid_lm.sum() > 0:
@@ -720,8 +933,8 @@ def validate_and_visualize(profiles):
 # Main
 # ---------------------------------------------------------------------------
 
-def run_experiment(skip_lm=False, lm_model="EleutherAI/pythia-6.9b",
-                   max_lm_providers=3000):
+def run_experiment(skip_lm=False, skip_ae=False, lm_model="EleutherAI/pythia-6.9b",
+                   max_lm_providers=3000, ae_epochs=100, ae_runs=5):
     """Run the full Medicaid confidence cartography experiment."""
     start_time = time.time()
 
@@ -761,6 +974,12 @@ def run_experiment(skip_lm=False, lm_model="EleutherAI/pythia-6.9b",
             dtype=torch.float16,
         )
 
+    # Step 4c: Autoencoder reconstruction error
+    if not skip_ae:
+        profiles = approach_c_autoencoder(
+            profiles, epochs=ae_epochs, n_runs=ae_runs,
+        )
+
     # Step 5: Validate and visualize
     results = validate_and_visualize(profiles)
 
@@ -778,6 +997,8 @@ def run_experiment(skip_lm=False, lm_model="EleutherAI/pythia-6.9b",
     print(f"  Excluded in data: {profiles['excluded'].sum():,}")
     if "stat_auc" in results:
         print(f"  Statistical AUC: {results['stat_auc']:.4f}")
+    if "ae_auc" in results:
+        print(f"  Autoencoder AUC: {results['ae_auc']:.4f}")
     if "lm_auc" in results:
         print(f"  LM Confidence AUC: {results['lm_auc']:.4f}")
     print(f"  Total time: {elapsed:.1f}s")
@@ -786,20 +1007,27 @@ def run_experiment(skip_lm=False, lm_model="EleutherAI/pythia-6.9b",
 
 
 if __name__ == "__main__":
-    # Start with statistical approach only (much faster)
-    # Add --lm flag to also run LM confidence mapping
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--lm", action="store_true",
                         help="Run LM confidence mapping (slow, needs GPU/MPS)")
+    parser.add_argument("--ae", action="store_true",
+                        help="Run autoencoder reconstruction error")
     parser.add_argument("--model", default="EleutherAI/pythia-6.9b",
                         help="Model for LM confidence mapping")
     parser.add_argument("--max-providers", type=int, default=3000,
                         help="Max providers for LM analysis")
+    parser.add_argument("--ae-epochs", type=int, default=100,
+                        help="Autoencoder training epochs")
+    parser.add_argument("--ae-runs", type=int, default=5,
+                        help="Autoencoder ensemble runs")
     args = parser.parse_args()
 
     run_experiment(
         skip_lm=not args.lm,
+        skip_ae=not args.ae,
         lm_model=args.model,
         max_lm_providers=args.max_providers,
+        ae_epochs=args.ae_epochs,
+        ae_runs=args.ae_runs,
     )

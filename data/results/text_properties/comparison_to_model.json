@@ -1,0 +1,11 @@
+{
+  "text_properties_auc": 0.8239819004524886,
+  "text_properties_ci": [
+    0.7160564884049732,
+    0.9178014303649896
+  ],
+  "model_based_6.9b_auc": 0.59391771019678,
+  "model_based_pair_auc": 0.6395348837209303,
+  "model_based_slope_auc": 0.6539952295766249,
+  "note": "Model-based AUCs are on 164-item true/false classification; text AUC is on 99-item regime classification (different tasks)"
+}

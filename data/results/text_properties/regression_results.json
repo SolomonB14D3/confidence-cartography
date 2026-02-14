@@ -1,0 +1,78 @@
+{
+  "n_items": 99,
+  "n_regime1": 65,
+  "n_regime2": 34,
+  "n_features": 27,
+  "feature_names": [
+    "n_tokens",
+    "n_chars",
+    "avg_word_length",
+    "type_token_ratio",
+    "pct_stopwords",
+    "n_proper_nouns",
+    "n_numbers",
+    "n_entities",
+    "has_quote",
+    "has_date",
+    "has_person",
+    "n_sentences",
+    "avg_sent_length",
+    "max_depth",
+    "n_clauses",
+    "is_cultural",
+    "is_medical",
+    "is_scientific",
+    "is_historical",
+    "is_geographic",
+    "has_superlative",
+    "has_negation",
+    "is_surprising",
+    "is_declarative",
+    "brevity",
+    "references_fiction",
+    "references_brand"
+  ],
+  "results_by_subset": {
+    "all": {
+      "auc": 0.8239819004524886,
+      "ci_lo": 0.7160564884049732,
+      "ci_hi": 0.9178014303649896
+    },
+    "domain_only": {
+      "auc": 0.7212669683257918,
+      "ci_lo": 0.6134421543630109,
+      "ci_hi": 0.821892641129032
+    },
+    "transmissibility_only": {
+      "auc": 0.4117647058823529,
+      "ci_lo": 0.25,
+      "ci_hi": 0.5714285714285714
+    },
+    "lexical_only": {
+      "auc": 0.6701357466063348,
+      "ci_lo": 0.5584604185038212,
+      "ci_hi": 0.7789012748756218
+    }
+  },
+  "feature_importance": {
+    "references_fiction": 0.5377263062226854,
+    "is_cultural": 0.4277754934418507,
+    "is_medical": -0.1821312062828292,
+    "has_person": 0.17172277673922634,
+    "references_brand": 0.07472224720120225,
+    "has_quote": 0.07005094565636946,
+    "avg_word_length": -0.014947450533036751,
+    "is_scientific": -0.014150306013815523
+  },
+  "comparison": {
+    "text_properties_auc": 0.8239819004524886,
+    "text_properties_ci": [
+      0.7160564884049732,
+      0.9178014303649896
+    ],
+    "model_based_6.9b_auc": 0.59391771019678,
+    "model_based_pair_auc": 0.6395348837209303,
+    "model_based_slope_auc": 0.6539952295766249,
+    "note": "Model-based AUCs are on 164-item true/false classification; text AUC is on 99-item regime classification (different tasks)"
+  }
+}

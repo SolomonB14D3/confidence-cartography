@@ -1,0 +1,15 @@
+{
+  "r1_base_win_rate": 0.9375,
+  "r1_inst_win_rate": 0.9375,
+  "r2_base_win_rate": 0.3235294117647059,
+  "r2_inst_win_rate": 0.38235294117647056,
+  "r1_base_mean_margin": 0.30438511037312566,
+  "r1_inst_mean_margin": 0.3464771219867746,
+  "r2_base_mean_margin": -0.08694197512510182,
+  "r2_inst_mean_margin": -0.0522500675636847,
+  "base_diagnostic_separation": 0.6139705882352942,
+  "inst_diagnostic_separation": 0.5551470588235294,
+  "separation_change": "NARROWED",
+  "n_r1": 64,
+  "n_r2": 34
+}

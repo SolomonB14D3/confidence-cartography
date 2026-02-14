@@ -1,0 +1,98 @@
+{
+  "overall_comparison": {
+    "r1_base_mean_delta": 0.10131637526363914,
+    "r1_inst_mean_delta": 0.10300760239182868,
+    "r1_shift": 0.0016912271281895458,
+    "r1_base_win_rate": 0.890625,
+    "r1_inst_win_rate": 0.859375,
+    "r1_wilcoxon_p": 0.5561964561941721,
+    "r2_base_mean_delta": -0.010046548770163316,
+    "r2_inst_mean_delta": -0.01120180370728418,
+    "r2_shift": -0.001155254937120865,
+    "r2_base_win_rate": 0.4117647058823529,
+    "r2_inst_win_rate": 0.4117647058823529,
+    "r2_wilcoxon_p": 0.20868658612016588,
+    "r2_base_false_conf": 0.39054231035398723,
+    "r2_inst_false_conf": 0.4145746362984452,
+    "n_r1": 64,
+    "n_r2": 34
+  },
+  "divergence_comparison": {
+    "r1_base_win_rate": 0.9375,
+    "r1_inst_win_rate": 0.9375,
+    "r2_base_win_rate": 0.3235294117647059,
+    "r2_inst_win_rate": 0.38235294117647056,
+    "r1_base_mean_margin": 0.30438511037312566,
+    "r1_inst_mean_margin": 0.3464771219867746,
+    "r2_base_mean_margin": -0.08694197512510182,
+    "r2_inst_mean_margin": -0.0522500675636847,
+    "base_diagnostic_separation": 0.6139705882352942,
+    "inst_diagnostic_separation": 0.5551470588235294,
+    "separation_change": "NARROWED",
+    "n_r1": 64,
+    "n_r2": 34
+  },
+  "regime_transitions": {
+    "transitions": {
+      "R1\u2192R1": 71,
+      "R2\u2192R2": 25,
+      "R2\u2192R1": 2
+    },
+    "r1_to_r2": 0,
+    "r2_to_r1": 2,
+    "net_to_r2": -2,
+    "fisher_p": 2.5816839578566654e-21,
+    "total_items": 98
+  },
+  "transition_items": [
+    {
+      "pair_id": "casablanca_play_it_context",
+      "original_regime": "R2",
+      "base_regime": "R2",
+      "inst_regime": "R1",
+      "base_margin": -0.11948978900909424,
+      "inst_margin": 0.6195093989372253
+    },
+    {
+      "pair_id": "silence_of_lambs_raw",
+      "original_regime": "R2",
+      "base_regime": "R2",
+      "inst_regime": "R1",
+      "base_margin": -0.019277513027191162,
+      "inst_margin": 0.09758744388818741
+    }
+  ],
+  "domain_interaction": {
+    "cultural": {
+      "n": 34,
+      "n_r1": 0,
+      "n_r2": 34,
+      "base_mean_delta": -0.010046548770163316,
+      "inst_mean_delta": -0.01120180370728418,
+      "mean_shift": -0.0011552549371208639,
+      "wilcoxon_p": 0.20868658612016588
+    },
+    "general_facts": {
+      "n": 39,
+      "n_r1": 39,
+      "n_r2": 0,
+      "base_mean_delta": 0.09828477108100445,
+      "inst_mean_delta": 0.10040611416324245,
+      "mean_shift": 0.0021213430822379985,
+      "wilcoxon_p": 0.6045658352995815
+    },
+    "medical": {
+      "n": 25,
+      "n_r1": 25,
+      "n_r2": 0,
+      "base_mean_delta": 0.10604567778854924,
+      "inst_mean_delta": 0.1070659240284232,
+      "mean_shift": 0.0010202462398739608,
+      "wilcoxon_p": 0.7711594104766846
+    }
+  },
+  "models": {
+    "base": "Qwen/Qwen2.5-7B",
+    "instruct": "Qwen/Qwen2.5-7B-Instruct"
+  }
+}

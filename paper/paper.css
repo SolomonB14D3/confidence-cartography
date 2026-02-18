@@ -1,0 +1,136 @@
+body {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    max-width: 6.5in;
+    margin: 1in auto;
+    color: #111;
+}
+
+h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 0.2em;
+    line-height: 1.25;
+}
+
+h2 {
+    font-size: 13pt;
+    font-weight: bold;
+    margin-top: 1.4em;
+    margin-bottom: 0.4em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.15em;
+}
+
+h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-top: 1.1em;
+    margin-bottom: 0.3em;
+}
+
+p {
+    margin: 0.5em 0;
+    text-align: justify;
+}
+
+/* Author line */
+p strong:only-child {
+    display: block;
+    margin-top: 0.4em;
+    font-size: 12pt;
+}
+
+/* Abstract styling via the hr separators */
+hr {
+    border: none;
+    border-top: 1px solid #999;
+    margin: 1em 0;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    margin: 0.8em auto;
+    font-size: 10pt;
+    width: auto;
+}
+
+th {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    border: 1px solid #ccc;
+    padding: 3px 10px;
+}
+
+tr:nth-child(even) td {
+    background: #fafafa;
+}
+
+/* Code / preformatted (algorithm blocks) */
+pre {
+    font-family: "Courier New", monospace;
+    font-size: 9pt;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 0.6em 1em;
+    line-height: 1.4;
+    white-space: pre;
+    margin: 0.8em 0;
+}
+
+code {
+    font-family: "Courier New", monospace;
+    font-size: 9.5pt;
+}
+
+/* Figures */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1em auto 0.3em auto;
+}
+
+/* Figure captions (the alt text rendered as a paragraph after the image) */
+img + p em,
+figure figcaption {
+    display: block;
+    font-size: 9.5pt;
+    color: #444;
+    text-align: center;
+    margin-top: 0.2em;
+    margin-bottom: 1em;
+}
+
+/* Bold key stats */
+p strong {
+    font-weight: bold;
+}
+
+/* References */
+h2 + p, h2 ~ p {
+    margin: 0.4em 0;
+}
+
+/* Ordered and unordered lists */
+ol, ul {
+    margin: 0.4em 0 0.4em 1.5em;
+    padding: 0;
+}
+
+li {
+    margin: 0.2em 0;
+}
+
+/* Italics for technical terms */
+em {
+    font-style: italic;
+}

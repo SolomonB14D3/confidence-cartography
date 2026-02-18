@@ -1,24 +1,29 @@
-# Model cache (huge files)
+# Model cache and large binary files
 __pycache__/
 *.pyc
 .cache/
 models/
+*.gguf
+*.bin
+*.pt
+*.safetensors
 
 # HuggingFace cache
 .huggingface/
 
-# Large data files
-*.pt
-*.bin
-*.safetensors
+# Large data files — excluded from repo
+data/medicaid/
+data/medicare/
+data/fact_pairs/*.csv
+data/fact_pairs/*.parquet
 
-# But keep result JSONLs and figures
+# Medicaid/fraud detection branch (spun out to separate project)
+flat_billing_analysis.py
+
+# Keep result JSONLs and figures — do NOT ignore these:
 # data/results/ — KEEP
 # figures/ — KEEP
-
-# Large Medicaid data files (too big for git)
-data/medicaid/*.parquet
-data/medicaid/*.csv
+# paper/ — KEEP
 
 # OS files
 .DS_Store
@@ -26,7 +31,14 @@ Thumbs.db
 
 # Conda/venv
 .conda/
+venv/
+.venv/
 *.egg-info/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Environment and secrets
+.env
+*.key
+credentials*.json

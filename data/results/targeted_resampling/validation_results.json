@@ -1,0 +1,517 @@
+{
+  "v1_leakage": {
+    "n_items": 49,
+    "method_a_full": {
+      "correct": 30,
+      "rate": 0.6122448979591837
+    },
+    "method_b_clean": {
+      "correct": 30,
+      "rate": 0.6122448979591837
+    },
+    "method_c_replaced": {
+      "correct": 30,
+      "rate": 0.6122448979591837
+    },
+    "verdict": "robust",
+    "item_details": [
+      {
+        "pair_id": "france_capital",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "japan_capital",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "australia_capital",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "largest_ocean",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "longest_river",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "water_boiling",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "light_vs_sound",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "diamond_composition",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "gold_symbol",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "speed_of_light",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "ww2_end",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "berlin_wall",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "moon_landing",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "roman_fall",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "declaration",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "photosynthesis",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "largest_organ",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "sqrt_144",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "triangle_sides",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "mona_lisa",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "great_wall",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "coffee",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "olympics",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "us_currency",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "statue_liberty",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "moon_orbit",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "red_blood_cells",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "insulin_source",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "penicillin_use",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "antihistamines",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "type1_diabetes",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "malaria_transmission",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "hiv_target",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "scurvy_cause",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "vaccine_mechanism",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "vitamin_d_sunlight",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "iron_anemia",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "brain_energy",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "neuron_communication",
+        "regime": "R1",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "dna_structure",
+        "regime": "R1",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "play_it_sam",
+        "regime": "R2",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "berenstain",
+        "regime": "R2",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "mandela_death",
+        "regime": "R2",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "chartreuse",
+        "regime": "R2",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "mandela_death_raw",
+        "regime": "R2",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "silence_of_lambs_raw",
+        "regime": "R2",
+        "a_correct": true,
+        "b_correct": true,
+        "c_correct": true
+      },
+      {
+        "pair_id": "casablanca_play_it_raw",
+        "regime": "R2",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "star_trek_beam_raw",
+        "regime": "R2",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      },
+      {
+        "pair_id": "apollo_13_raw",
+        "regime": "R2",
+        "a_correct": false,
+        "b_correct": false,
+        "c_correct": false
+      }
+    ]
+  },
+  "v2_bootstrap": {
+    "greedy": {
+      "mean": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0
+    },
+    "blind5": {
+      "mean": 0.011235955056179775,
+      "ci_lower": 0.0,
+      "ci_upper": 0.033707865168539325
+    },
+    "oracle5": {
+      "mean": 0.14606741573033707,
+      "ci_lower": 0.07865168539325842,
+      "ci_upper": 0.2247191011235955
+    },
+    "bon5": {
+      "mean": 0.056179775280898875,
+      "ci_lower": 0.011235955056179775,
+      "ci_upper": 0.11235955056179775
+    },
+    "bon10": {
+      "mean": 0.056179775280898875,
+      "ci_lower": 0.011235955056179775,
+      "ci_upper": 0.11235955056179775
+    },
+    "pipeline_est": {
+      "mean": 0.1348314606741573,
+      "ci_lower": 0.06741573033707865,
+      "ci_upper": 0.21348314606741572
+    },
+    "mcnemar_pipeline_vs_bon5": {
+      "chi2": 2.4,
+      "p_value": 0.12133525035848214,
+      "b01": 4,
+      "b10": 11
+    },
+    "mcnemar_pipeline_vs_bon10": {
+      "chi2": 2.4,
+      "p_value": 0.12133525035848214,
+      "b01": 4,
+      "b10": 11
+    }
+  },
+  "v3_r1_only": {
+    "greedy_correct": {
+      "overall": 0.0,
+      "r1": 0.0,
+      "r2": 0.0
+    },
+    "blind5_correct": {
+      "overall": 0.011235955056179775,
+      "r1": 0.015384615384615385,
+      "r2": 0.0
+    },
+    "oracle5_correct": {
+      "overall": 0.14606741573033707,
+      "r1": 0.16923076923076924,
+      "r2": 0.08333333333333333
+    },
+    "bon5_correct": {
+      "overall": 0.056179775280898875,
+      "r1": 0.07692307692307693,
+      "r2": 0.0
+    },
+    "bon10_correct": {
+      "overall": 0.056179775280898875,
+      "r1": 0.07692307692307693,
+      "r2": 0.0
+    },
+    "r1_pipeline": {
+      "reachability": 0.6153846153846154,
+      "localization": 0.4,
+      "selection": 0.6122448979591837,
+      "accuracy": 0.15070643642072215,
+      "ci": {
+        "mean": 0.15384615384615385,
+        "ci_lower": 0.07692307692307693,
+        "ci_upper": 0.24615384615384617
+      }
+    }
+  },
+  "v4_attribution": {
+    "Baseline loc + Baseline sel": {
+      "loc": 0.2808988764044944,
+      "sel": 0.146,
+      "pipeline": 0.0225561797752809
+    },
+    "Baseline loc + Backward sel (full)": {
+      "loc": 0.2808988764044944,
+      "sel": 0.6122448979591837,
+      "pipeline": 0.09458839715661548
+    },
+    "Baseline loc + Backward sel (clean)": {
+      "loc": 0.2808988764044944,
+      "sel": 0.6122448979591837,
+      "pipeline": 0.09458839715661548
+    },
+    "Best loc + Baseline sel": {
+      "loc": 0.3146067415730337,
+      "sel": 0.146,
+      "pipeline": 0.025262921348314607
+    },
+    "Best loc + Backward sel (full)": {
+      "loc": 0.3146067415730337,
+      "sel": 0.6122448979591837,
+      "pipeline": 0.10593900481540933
+    },
+    "Best loc + Backward sel (clean)": {
+      "loc": 0.3146067415730337,
+      "sel": 0.6122448979591837,
+      "pipeline": 0.10593900481540933
+    },
+    "attribution": {
+      "full_improvement": 0.08338282504012842,
+      "selection_contribution": 0.07203221738133457,
+      "localization_contribution": 0.002706741573033706,
+      "interaction": 0.008643866085760146
+    }
+  },
+  "v5_per_domain": {
+    "truth": {
+      "n": 40,
+      "reachability": 0.65,
+      "loc_baseline": 0.3,
+      "loc_drop": 0.45,
+      "oracle_selection": 0.15,
+      "pipeline_estimate": 0.17908163265306126
+    },
+    "medical": {
+      "n": 25,
+      "reachability": 0.56,
+      "loc_baseline": 0.36,
+      "loc_drop": 0.32,
+      "oracle_selection": 0.2,
+      "pipeline_estimate": 0.10971428571428574
+    },
+    "mandela_orig": {
+      "n": 13,
+      "reachability": 0.3076923076923077,
+      "loc_baseline": 0.15384615384615385,
+      "loc_drop": 0.0,
+      "oracle_selection": 0.07692307692307693,
+      "pipeline_estimate": 0.0
+    },
+    "mandela_exp": {
+      "n": 11,
+      "reachability": 0.2727272727272727,
+      "loc_baseline": 0.18181818181818182,
+      "loc_drop": 0.18181818181818182,
+      "oracle_selection": 0.09090909090909091,
+      "pipeline_estimate": 0.030359251138471918
+    }
+  }
+}

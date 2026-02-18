@@ -1,0 +1,10 @@
+{
+  "R1": {
+    "n_pairs": 65,
+    "step1_correct_in_top5": 40
+  },
+  "R2": {
+    "n_pairs": 28,
+    "step1_correct_in_top5": 7
+  }
+}

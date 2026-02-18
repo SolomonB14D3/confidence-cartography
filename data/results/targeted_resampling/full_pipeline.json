@@ -1,0 +1,66 @@
+{
+  "pathB": {
+    "probe": {
+      "-1": {
+        "accuracy": 0.7020408163265306,
+        "auc": 0.45949604331528526,
+        "selection_rate": 0.14285714285714285,
+        "n_items": 49
+      },
+      "-4": {
+        "accuracy": 0.6775510204081633,
+        "auc": 0.5069762598917118,
+        "selection_rate": 0.20408163265306123,
+        "n_items": 49
+      },
+      "-8": {
+        "accuracy": 0.6775510204081633,
+        "auc": 0.4964598084131612,
+        "selection_rate": 0.20408163265306123,
+        "n_items": 49
+      },
+      "-16": {
+        "accuracy": 0.673469387755102,
+        "auc": 0.5022907122032486,
+        "selection_rate": 0.20408163265306123,
+        "n_items": 49
+      },
+      "16": {
+        "accuracy": 0.6775510204081633,
+        "auc": 0.5258225739275302,
+        "selection_rate": 0.20408163265306123,
+        "n_items": 49
+      },
+      "4": {
+        "accuracy": 0.6408163265306123,
+        "auc": 0.5042690545605997,
+        "selection_rate": 0.2653061224489796,
+        "n_items": 49
+      }
+    },
+    "entropy": {
+      "mean_entropy_selection": 0.20408163265306123,
+      "min_entropy_selection": 0.12244897959183673,
+      "pos1_entropy_selection": 0.3469387755102041,
+      "n_items": 49
+    },
+    "backward": {
+      "backward_conf_selection": 0.6122448979591837,
+      "n_items": 49
+    },
+    "minconf": {
+      "min_conf_selection": 0.16326530612244897,
+      "below_thresh_selection": 0.1836734693877551,
+      "n_items": 49
+    },
+    "best_rate": 0.6122448979591837
+  },
+  "pathA": {
+    "baseline_min_conf": 0.2808988764044944,
+    "top_gap": 0.14606741573033707,
+    "local_drop": 0.3146067415730337,
+    "entropy_max": 0.10112359550561797,
+    "entropy_spike": 0.1348314606741573,
+    "n_items": 89
+  }
+}

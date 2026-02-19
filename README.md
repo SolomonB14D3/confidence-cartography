@@ -8,6 +8,49 @@ A paper-ready ML interpretability study showing that teacher-forced confidence (
 
 ---
 
+## How It Works
+
+Teacher-forced probability extraction measures the confidence a language model assigns to each token in a given text. By comparing confidence on true vs. false versions of claims, we detect systematic biases that mirror human false beliefs.
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    CONFIDENCE CARTOGRAPHY                           │
+│                   False-Belief Sensor Pipeline                      │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   INPUT: Claim Pair                                                 │
+│   ┌─────────────────────┐    ┌─────────────────────┐               │
+│   │ "Luke, I am your    │    │ "No, I am your      │               │
+│   │  father." (popular) │    │  father." (correct) │               │
+│   └──────────┬──────────┘    └──────────┬──────────┘               │
+│              │                          │                           │
+│              ▼                          ▼                           │
+│   ┌──────────────────────────────────────────────────┐             │
+│   │           PYTHIA MODEL (160M → 12B)              │             │
+│   │        Teacher-Forced Probability Mode           │             │
+│   └──────────────────────────────────────────────────┘             │
+│              │                          │                           │
+│              ▼                          ▼                           │
+│        P(popular) = 0.076         P(correct) = 0.052               │
+│                                                                     │
+│              └──────────┬───────────────┘                          │
+│                         ▼                                           │
+│   ┌──────────────────────────────────────────────────┐             │
+│   │  Confidence Ratio = P(popular) / P(correct)      │             │
+│   │                   = 1.46 → MODEL PREFERS WRONG   │             │
+│   └──────────────────────────────────────────────────┘             │
+│                         │                                           │
+│                         ▼                                           │
+│   ┌──────────────────────────────────────────────────┐             │
+│   │  Correlate with Human False-Belief Prevalence    │             │
+│   │  ρ = 0.652 (p = 0.016) at 6.9B parameters        │             │
+│   └──────────────────────────────────────────────────┘             │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## Key Findings
 
 - Model confidence ratios significantly correlate with human false-belief prevalence (**ρ=0.652, p=0.016**) across Pythia 160M→12B
@@ -16,67 +59,82 @@ A paper-ready ML interpretability study showing that teacher-forced confidence (
 - "Mandela effect" false memories show systematically lower confidence than accurate memories — model confidence tracks transmissibility, not truth directly
 - Targeted resampling at low-confidence token positions outperforms uniform best-of-N at lower compute cost
 
+### Highlighted Results
+
+| Finding | Value | Significance |
+|---------|-------|--------------|
+| **1B Parameter Peak** | ρ = 0.718 | Strongest correlation occurs at mid-scale, not largest model |
+| **Early Emergence** | Step 256 | Signal is stable early in training—useful for studying training dynamics |
+| **Compute Efficiency** | 3-5x | Targeted resampling achieves comparable improvement at lower cost vs. uniform best-of-N |
+
+---
+
+## Testing the Persistence of False Beliefs
+
+This repository provides the baseline for how **Pythia (2023)** encoded cultural misconceptions. We invite researchers to run these extraction scripts on newer models (e.g., Llama 3, Qwen 2.5, Gemma 2) to answer:
+
+- **Do false beliefs persist?** Are "Mandela Effects" still encoded in 2025/2026 models?
+- **Do they fade?** As training corpora evolve, do old misconceptions weaken?
+- **Do new ones emerge?** What false beliefs are uniquely strong in newer models?
+
+To test a new model, modify `src/scaling.py` to add your model to `MODEL_REGISTRY`, then run:
+
+```bash
+python src/experiments/exp_c_mandela.py --all
+```
+
 ---
 
 ## Project Structure
 
 ```
-src/
-├── engine.py                         # Core confidence extraction (teacher-forced + generation)
-├── schema.py                         # Data classes and storage
-├── viz.py                            # Visualization toolkit
-├── training_utils.py                 # Fine-tuning helpers
-├── scaling.py / scaling_viz.py       # Multi-model loading and scale plots
-└── experiments/
-    ├── exp1_baselines.py             # Baseline confidence by claim category
-    ├── exp2_truth.py                 # True vs. false discrimination
-    ├── exp3_contested.py             # Contested/controversial claims
-    ├── exp4_training.py              # Training dynamics
-    ├── exp5_consensus.py             # Consensus vs. minority views
-    ├── exp6_anomaly.py               # Anomaly detection framing
-    ├── exp9_medical_validation.py    # OOD medical generalization
-    ├── exp_a1–exp_a4_*.py           # Scaling experiments (160M→12B)
-    ├── exp_b9_rlhf_regime.py        # RLHF vs. base model comparison
-    ├── exp_b14_checkpoint_stability.py  # Checkpoint stability (null result)
-    ├── exp_b15_text_properties.py   # Text surface property controls
-    ├── exp_c_mandela.py             # Mandela effect false-memory calibration
-    ├── exp_mandela_*.py             # Mandela expanded + reanalysis
-    ├── exp_targeted_resampling*.py  # Targeted resampling at uncertainty points
-    └── exp_token_localization*.py   # Token-level uncertainty localization
-
-data/
-├── prompts/                          # Input prompt sets
-└── results/                          # JSONL outputs from all experiments (~252 files, 20 MB)
-
-figures/                              # All generated visualizations (~170 figures)
-
-paper/
-├── confidence_cartography.md         # Paper draft (Markdown)
-├── confidence_cartography.pdf        # Compiled PDF
-└── paper.css                         # Stylesheet for HTML render
+confidence-cartography/
+├── data/
+│   ├── mandela_effect.json           # 13 Mandela Effect items (popular vs correct)
+│   ├── medical_claims.json           # 25 medical claim pairs (true vs false)
+│   └── results/                       # JSONL outputs from all experiments
+│
+├── notebooks/
+│   └── reproduce_figure1.ipynb       # Reproduce the ρ=0.652 correlation plot
+│
+├── src/
+│   ├── engine.py                     # Core confidence extraction
+│   ├── schema.py                     # Data classes and storage
+│   ├── scaling.py / scaling_viz.py   # Multi-model loading and scale plots
+│   └── experiments/
+│       ├── exp_c_mandela.py          # Mandela effect analysis
+│       ├── exp9_medical_validation.py # Medical domain generalization
+│       ├── exp_targeted_resampling*.py # Compute-efficient resampling
+│       └── ...                        # Additional experiments
+│
+├── figures/                           # All generated visualizations (~170 figures)
+├── paper/                             # Paper draft (Markdown, HTML, PDF)
+└── requirements.txt                   # Dependencies with version pins
 ```
 
 ---
 
-## Reproducing Experiments
+## Quick Start
 
-### Requirements
+### Installation
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
-### Running an experiment
+### Reproduce Figure 1
 
 ```bash
-python src/experiments/exp1_baselines.py
-python src/experiments/exp2_truth.py
-# etc.
+jupyter notebook notebooks/reproduce_figure1.ipynb
 ```
 
-Results are written as JSONL to `data/results/`. Figures are written to `figures/`.
+Or run the Mandela experiment directly:
 
-### Core engine
+```bash
+python src/experiments/exp_c_mandela.py --all
+```
+
+### Core Engine
 
 `src/engine.py` exposes two modes:
 
@@ -99,7 +157,7 @@ Developed on Apple M3 Ultra with 96 GB unified memory. Experiments are CPU/MPS c
 
 ## Citation
 
-```
+```bibtex
 @misc{sanchez2026confidence,
   author  = {Sanchez, Bryan},
   title   = {Confidence Cartography: Teacher-Forced Probability as a False-Belief Sensor in Language Models},

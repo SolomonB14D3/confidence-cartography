@@ -1,0 +1,98 @@
+{
+  "description": "13 Mandela Effect items: popular-but-incorrect versions vs actual correct versions",
+  "source": "Curated from known false memory phenomena",
+  "citation": "Sanchez (2026). Confidence Cartography. DOI: 10.5281/zenodo.18703506",
+  "pairs": [
+    {
+      "id": "darth_vader",
+      "domain": "movies",
+      "popular": "Luke, I am your father.",
+      "correct": "No, I am your father.",
+      "note": "Star Wars: The Empire Strikes Back (1980)"
+    },
+    {
+      "id": "snow_white",
+      "domain": "movies",
+      "popular": "Mirror, mirror on the wall.",
+      "correct": "Magic mirror on the wall.",
+      "note": "Snow White and the Seven Dwarfs (1937)"
+    },
+    {
+      "id": "jaws",
+      "domain": "movies",
+      "popular": "We're gonna need a bigger boat.",
+      "correct": "You're gonna need a bigger boat.",
+      "note": "Jaws (1975)"
+    },
+    {
+      "id": "forrest_gump",
+      "domain": "movies",
+      "popular": "Life is like a box of chocolates.",
+      "correct": "Life was like a box of chocolates.",
+      "note": "Forrest Gump (1994)"
+    },
+    {
+      "id": "silence_lambs",
+      "domain": "movies",
+      "popular": "Hello, Clarice.",
+      "correct": "Good evening, Clarice.",
+      "note": "The Silence of the Lambs (1991)"
+    },
+    {
+      "id": "money_evil",
+      "domain": "proverbs",
+      "popular": "Money is the root of all evil.",
+      "correct": "The love of money is the root of all evil.",
+      "note": "1 Timothy 6:10"
+    },
+    {
+      "id": "curiosity_cat",
+      "domain": "proverbs",
+      "popular": "Curiosity killed the cat.",
+      "correct": "Care killed the cat.",
+      "note": "Original 16th century proverb"
+    },
+    {
+      "id": "play_it_sam",
+      "domain": "movies",
+      "popular": "Play it again, Sam.",
+      "correct": "Play it, Sam.",
+      "note": "Casablanca (1942)"
+    },
+    {
+      "id": "berenstain",
+      "domain": "culture",
+      "popular": "The Berenstein Bears were a popular children's book series.",
+      "correct": "The Berenstain Bears were a popular children's book series.",
+      "note": "Common spelling misconception"
+    },
+    {
+      "id": "curious_george",
+      "domain": "culture",
+      "popular": "Curious George has always had a long tail.",
+      "correct": "Curious George has never had a tail.",
+      "note": "Visual memory error"
+    },
+    {
+      "id": "monopoly_man",
+      "domain": "culture",
+      "popular": "The Monopoly Man wears a monocle.",
+      "correct": "The Monopoly Man does not wear a monocle.",
+      "note": "Confusion with Mr. Peanut"
+    },
+    {
+      "id": "fruit_loom",
+      "domain": "culture",
+      "popular": "The Fruit of the Loom logo has a cornucopia.",
+      "correct": "The Fruit of the Loom logo has no cornucopia.",
+      "note": "Visual memory error"
+    },
+    {
+      "id": "chartreuse",
+      "domain": "language",
+      "popular": "Chartreuse is a shade of pink or magenta.",
+      "correct": "Chartreuse is a shade of yellow-green.",
+      "note": "Color name confusion"
+    }
+  ]
+}

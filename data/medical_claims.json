@@ -1,0 +1,157 @@
+{
+  "description": "25 medical claim pairs: factually correct vs factually incorrect versions",
+  "source": "Curated medical knowledge for out-of-domain validation",
+  "citation": "Sanchez (2026). Confidence Cartography. DOI: 10.5281/zenodo.18703506",
+  "pairs": [
+    {
+      "id": "heart_chambers",
+      "domain": "anatomy",
+      "true": "The human heart has four chambers.",
+      "false": "The human heart has three chambers."
+    },
+    {
+      "id": "largest_internal_organ",
+      "domain": "anatomy",
+      "true": "The liver is the largest internal organ in the human body.",
+      "false": "The kidney is the largest internal organ in the human body."
+    },
+    {
+      "id": "red_blood_cells",
+      "domain": "anatomy",
+      "true": "Red blood cells carry oxygen throughout the body.",
+      "false": "Red blood cells carry carbon dioxide throughout the body."
+    },
+    {
+      "id": "adult_bones",
+      "domain": "anatomy",
+      "true": "The human body has 206 bones in adulthood.",
+      "false": "The human body has 150 bones in adulthood."
+    },
+    {
+      "id": "insulin_source",
+      "domain": "anatomy",
+      "true": "Insulin is produced by the pancreas.",
+      "false": "Insulin is produced by the liver."
+    },
+    {
+      "id": "longest_bone",
+      "domain": "anatomy",
+      "true": "The femur is the longest bone in the human body.",
+      "false": "The humerus is the longest bone in the human body."
+    },
+    {
+      "id": "aspirin_inflammation",
+      "domain": "pharmacology",
+      "true": "Aspirin reduces inflammation and relieves pain.",
+      "false": "Aspirin increases inflammation and relieves pain."
+    },
+    {
+      "id": "penicillin_use",
+      "domain": "pharmacology",
+      "true": "Penicillin is used to treat bacterial infections.",
+      "false": "Penicillin is used to treat viral infections."
+    },
+    {
+      "id": "antihistamines",
+      "domain": "pharmacology",
+      "true": "Antihistamines are used to treat allergic reactions.",
+      "false": "Antihistamines are used to treat bacterial infections."
+    },
+    {
+      "id": "type1_diabetes",
+      "domain": "disease",
+      "true": "Type 1 diabetes is an autoimmune disease.",
+      "false": "Type 1 diabetes is caused by eating too much sugar."
+    },
+    {
+      "id": "malaria_transmission",
+      "domain": "disease",
+      "true": "Malaria is transmitted by mosquitoes.",
+      "false": "Malaria is transmitted by houseflies."
+    },
+    {
+      "id": "hiv_target",
+      "domain": "disease",
+      "true": "HIV attacks the immune system by targeting CD4 cells.",
+      "false": "HIV attacks the immune system by targeting red blood cells."
+    },
+    {
+      "id": "tuberculosis_cause",
+      "domain": "disease",
+      "true": "Tuberculosis is caused by bacteria.",
+      "false": "Tuberculosis is caused by a virus."
+    },
+    {
+      "id": "scurvy_cause",
+      "domain": "disease",
+      "true": "Scurvy is caused by vitamin C deficiency.",
+      "false": "Scurvy is caused by vitamin D deficiency."
+    },
+    {
+      "id": "rabies_transmission",
+      "domain": "disease",
+      "true": "Rabies is transmitted through animal bites.",
+      "false": "Rabies is transmitted through contaminated water."
+    },
+    {
+      "id": "vaccine_mechanism",
+      "domain": "public_health",
+      "true": "Vaccines work by stimulating the immune system to produce antibodies.",
+      "false": "Vaccines work by directly killing pathogens in the bloodstream."
+    },
+    {
+      "id": "handwashing",
+      "domain": "public_health",
+      "true": "Handwashing reduces the spread of infectious diseases.",
+      "false": "Handwashing has no effect on the spread of infectious diseases."
+    },
+    {
+      "id": "smoking_cancer",
+      "domain": "public_health",
+      "true": "Smoking increases the risk of lung cancer.",
+      "false": "Smoking decreases the risk of lung cancer."
+    },
+    {
+      "id": "alcohol_liver",
+      "domain": "public_health",
+      "true": "Excessive alcohol consumption damages the liver.",
+      "false": "Excessive alcohol consumption strengthens the liver."
+    },
+    {
+      "id": "vitamin_d_sunlight",
+      "domain": "nutrition",
+      "true": "Vitamin D can be synthesized by the skin when exposed to sunlight.",
+      "false": "Vitamin D can only be obtained through diet."
+    },
+    {
+      "id": "iron_anemia",
+      "domain": "nutrition",
+      "true": "Iron deficiency can cause anemia.",
+      "false": "Iron deficiency can cause diabetes."
+    },
+    {
+      "id": "brain_energy",
+      "domain": "neuroscience",
+      "true": "The brain uses approximately 20 percent of the body's energy.",
+      "false": "The brain uses approximately 5 percent of the body's energy."
+    },
+    {
+      "id": "neuron_communication",
+      "domain": "neuroscience",
+      "true": "Neurons communicate through electrical and chemical signals.",
+      "false": "Neurons communicate only through electrical signals."
+    },
+    {
+      "id": "dna_structure",
+      "domain": "genetics",
+      "true": "DNA is a double helix structure.",
+      "false": "DNA is a single-stranded structure."
+    },
+    {
+      "id": "chromosome_count",
+      "domain": "genetics",
+      "true": "Humans typically have 23 pairs of chromosomes.",
+      "false": "Humans typically have 30 pairs of chromosomes."
+    }
+  ]
+}

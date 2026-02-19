@@ -4,7 +4,7 @@
 
 A paper-ready ML interpretability study showing that teacher-forced confidence (the probability a causal LM assigns to its own tokens) is a practical false-belief sensor that generalizes across model scales and domains.
 
-> Paper: *coming soon*
+> Paper: [DOI: 10.5281/zenodo.18703506](https://doi.org/10.5281/zenodo.18703506)
 
 ---
 
@@ -100,9 +100,11 @@ Developed on Apple M3 Ultra with 96 GB unified memory. Experiments are CPU/MPS c
 ## Citation
 
 ```
-@misc{confidence-cartography-2026,
-  title   = {Confidence Cartography: Using Language Models as Sensors for the Structure of Human Knowledge},
+@misc{sanchez2026confidence,
+  author  = {Sanchez, Bryan},
+  title   = {Confidence Cartography: Teacher-Forced Probability as a False-Belief Sensor in Language Models},
   year    = {2026},
-  url     = {https://github.com/SolomonB14D3/confidence-cartography}
+  doi     = {10.5281/zenodo.18703506},
+  url     = {https://doi.org/10.5281/zenodo.18703506}
 }
 ```

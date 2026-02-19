@@ -6,6 +6,13 @@ A paper-ready ML interpretability study showing that teacher-forced confidence (
 
 > Paper: [DOI: 10.5281/zenodo.18703506](https://doi.org/10.5281/zenodo.18703506)
 
+> **Pip-installable toolkit:** [`confidence-cartography-toolkit`](https://github.com/SolomonB14D3/confidence-cartography-toolkit) — reproduce the key results in 3 lines of Python:
+> ```python
+> import confidence_cartography as cc
+> results = cc.evaluate_mandela_effect("EleutherAI/pythia-6.9b")
+> print(f"Spearman rho: {results.rho:.3f}, p={results.p_value:.4f}")
+> ```
+
 ---
 
 ## How It Works

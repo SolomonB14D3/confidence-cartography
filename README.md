@@ -1,10 +1,12 @@
 # Confidence Cartography
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18718611.svg)](https://doi.org/10.5281/zenodo.18718611)
+
 **Using Language Models as Sensors for the Structure of Human Knowledge**
 
 A paper-ready ML interpretability study showing that teacher-forced confidence (the probability a causal LM assigns to its own tokens) is a practical false-belief sensor that generalizes across model scales and domains.
 
-> Paper: [DOI: 10.5281/zenodo.18703506](https://doi.org/10.5281/zenodo.18703506)
+> Paper: [DOI: 10.5281/zenodo.18718611](https://doi.org/10.5281/zenodo.18718611)
 
 > **Pip-installable toolkit:** [`confidence-cartography-toolkit`](https://github.com/SolomonB14D3/confidence-cartography-toolkit) — reproduce the key results in 3 lines of Python:
 > ```python
@@ -169,7 +171,7 @@ Developed on Apple M3 Ultra with 96 GB unified memory. Experiments are CPU/MPS c
   author  = {Sanchez, Bryan},
   title   = {Confidence Cartography: Teacher-Forced Probability as a False-Belief Sensor in Language Models},
   year    = {2026},
-  doi     = {10.5281/zenodo.18703506},
-  url     = {https://doi.org/10.5281/zenodo.18703506}
+  doi     = {10.5281/zenodo.18718611},
+  url     = {https://doi.org/10.5281/zenodo.18718611}
 }
 ```

@@ -166,12 +166,18 @@ Developed on Apple M3 Ultra with 96 GB unified memory. Experiments are CPU/MPS c
 
 ## Citation
 
+> Sanchez, B. (2026). *Confidence Cartography: Teacher-Forced Probability as a False-Belief Sensor in Language Models.* Zenodo. [doi:10.5281/zenodo.18703506](https://doi.org/10.5281/zenodo.18703506)
+
 ```bibtex
-@misc{sanchez2026confidence,
-  author  = {Sanchez, Bryan},
-  title   = {Confidence Cartography: Teacher-Forced Probability as a False-Belief Sensor in Language Models},
-  year    = {2026},
-  doi     = {10.5281/zenodo.18718611},
-  url     = {https://doi.org/10.5281/zenodo.18718611}
+@article{sanchez2026confidence,
+  author = {Sanchez, Bryan},
+  title = {Confidence Cartography: Teacher-Forced Probability as a False-Belief Sensor in Language Models},
+  year = {2026},
+  doi = {10.5281/zenodo.18703506},
+  url = {https://zenodo.org/records/18703506}
 }
 ```
+
+### Related Projects
+
+This method is extended in [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity), which applies the rho metric to compression auditing, behavioral localization, and merge method evaluation. See also [intelligent-svd](https://github.com/SolomonB14D3/intelligent-svd) for the CF90 compression method.
